@@ -75,7 +75,7 @@ document.getElementById('generatePackBtn').addEventListener('click', function() 
     var manifest = {
         "format_version": 2,
         "header": {
-            "name": "Made from faizul726.github.io",
+            "name": packName,
             "uuid": headerUUID,
             "version": [1, 0, 0]
         },
@@ -88,13 +88,15 @@ document.getElementById('generatePackBtn').addEventListener('click', function() 
         ]
     };
 
+    var packKey = packName.toLowerCase().replace(/[^a-z0-9_]/g, '_') || 'skinpack';
+
     var skins = {
         "geometry": "geometry.json",
-        "localization_name": "faizul726",
+        "localization_name": packKey,
         "skins": []
     };
 
-    var langFile = `skinpack.faizul726=${packName}\n`;
+    var langFile = `skinpack.${packKey}=${packName}\n`;
 
     var filePromises = files.map((file, index) => {
         return new Promise((resolve, reject) => {
@@ -108,7 +110,7 @@ document.getElementById('generatePackBtn').addEventListener('click', function() 
                 "type": "free"
             });
 
-            langFile += `skin.faizul726.${skinName}=Skin #${index + 1}\n`;
+            langFile += `skin.${packKey}.${skinName}=Skin #${index + 1}\n`;
 
             var reader = new FileReader();
             reader.onload = function(e) {
@@ -129,9 +131,20 @@ document.getElementById('generatePackBtn').addEventListener('click', function() 
             zip.file("skins.json", JSON.stringify(skins, null, 2));
             zip.folder("texts").file("en_US.lang", langFile);
 
-            var date = new Date();
-            var formattedDate = `${date.getFullYear()}${(date.getMonth() + 1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}_${date.getHours().toString().padStart(2, '0')}${date.getMinutes().toString().padStart(2, '0')}`;
-            var fileName = `skinpack_faizul726_${formattedDate}.zip.mcpack`;
+            var safeName = packName.replace(/[/\\?%*:|"<>]/g, '').trim();
+            safeName = safeName.replace(/\.mcpack$/i, '').trim();
+            if (!safeName) {
+                safeName = 'custom';
+            }
+
+            var fileName;
+            if (/skinpack$/i.test(safeName)) {
+                fileName = `${safeName}.mcpack`;
+            } else if (safeName.endsWith('_') || safeName.endsWith('-')) {
+                fileName = `${safeName}skinpack.mcpack`;
+            } else {
+                fileName = `${safeName}_skinpack.mcpack`;
+            }
 
             return zip.generateAsync({ type: "blob" }).then(content => {
                 var link = document.createElement("a");
