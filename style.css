@@ -1,0 +1,356 @@
+:root {
+    /* M3 Color Tokens (Emerald Green Theme) */
+    --md-primary: #10a37f;
+    --md-primary-container: #005c43;
+    --md-on-primary: #ffffff;
+    --md-surface: #1e1e1e;
+    --md-surface-container: #252525;
+    --md-surface-bright: #363636;
+    --md-surface-container-high: #2b2b2b; /* For Modal */
+    --md-on-surface: #e3e3e3;
+    --md-on-surface-variant: #c4c7c5;
+    --md-outline: #8e918f;
+    
+    /* Layout */
+    --radius-m: 12px;
+    --radius-l: 16px;
+    --radius-xl: 28px; /* For Modal */
+    --radius-pill: 50px;
+}
+
+body {
+    margin: 0;
+    background-color: #121212;
+    color: var(--md-on-surface);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+.subtitle {
+    color: var(--md-on-surface-variant);
+    margin-top: 8px;
+}
+h3 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Header */
+.top-app-bar {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Cards */
+.card {
+    background-color: var(--md-surface-container);
+    border-radius: var(--radius-l);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.settings-card {
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* M3 Input Field */
+.input-group {
+    position: relative;
+    margin-top: 8px;
+}
+
+.m3-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--md-outline);
+    border-radius: 4px;
+    padding: 16px 16px;
+    color: var(--md-on-surface);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.m3-input:focus {
+    border-color: var(--md-primary);
+    border-width: 2px;
+    outline: none;
+    padding: 15px 15px; /* Adjust for border width change */
+}
+
+.m3-label {
+    position: absolute;
+    left: 14px;
+    top: 16px;
+    color: var(--md-on-surface-variant);
+    pointer-events: none;
+    background-color: var(--md-surface-container);
+    padding: 0 4px;
+    transition: 0.2s;
+}
+
+.m3-input:focus ~ .m3-label,
+.m3-input:not(:placeholder-shown) ~ .m3-label {
+    top: -8px;
+    left: 12px;
+    font-size: 0.75rem;
+    color: var(--md-primary);
+    font-weight: 500;
+}
+
+/* Grid System for Skins */
+.skins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.skin-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--md-surface-bright);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--md-primary);
+}
+
+/* File Upload Button */
+.file-upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    border: 1px dashed var(--md-outline);
+    border-radius: var(--radius-m);
+    cursor: pointer;
+    transition: 0.2s;
+    box-sizing: border-box;
+}
+
+.file-upload-btn:hover {
+    background-color: rgba(255,255,255,0.05);
+    border-color: var(--md-primary);
+    color: var(--md-primary);
+}
+
+.file-uploaded {
+    border-style: solid;
+    border-color: var(--md-primary);
+    background-color: rgba(16, 163, 127, 0.1);
+    color: var(--md-primary);
+}
+
+/* Radio Buttons */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.radio-label input {
+    display: none;
+}
+
+.radio-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--md-outline);
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.radio-label input:checked + .radio-custom {
+    border-color: var(--md-primary);
+}
+
+.radio-label input:checked + .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--md-primary);
+    border-radius: 50%;
+}
+
+/* Extended FAB (Download Button) */
+.action-bar {
+    position: sticky;
+    bottom: 24px;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.fab-extended {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+    border: none;
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fab-extended:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+    background-color: #14b890;
+}
+
+.fab-extended:active {
+    transform: scale(0.98);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--md-on-surface-variant);
+    padding-bottom: 80px; /* Space for FAB */
+}
+
+footer a {
+    color: var(--md-primary);
+    text-decoration: none;
+}
+
+.github-badge {
+    display: inline-block;
+    margin-top: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.github-badge:hover {
+    opacity: 1;
+}
+
+/* --- Modal / Popup Styles --- */
+.hidden {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+    background-color: var(--md-surface-container-high);
+    padding: 24px;
+    border-radius: var(--radius-xl);
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: scale(1);
+    animation: scaleUp 0.2s cubic-bezier(0.2, 0.0, 0.2, 1);
+}
+
+.modal-icon {
+    font-size: 32px;
+    color: #ffb4a9; /* Error/Warning Color */
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: var(--md-on-surface);
+}
+
+.modal-text {
+    font-size: 1rem;
+    color: var(--md-on-surface-variant);
+    margin: 0 0 24px 0;
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: var(--md-primary);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.text-button:hover {
+    background-color: rgba(16, 163, 127, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

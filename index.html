@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Skin Pack Creator</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+</head>
+<body>
+
+    <main class="container">
+        <header class="top-app-bar">
+            <h1>MCBE Skin Pack Creator</h1>
+            <p class="subtitle">Generate .mcpack files instantly</p>
+        </header>
+
+        <section class="card settings-card">
+            <div class="input-group">
+                <input type="text" id="packName" class="m3-input" placeholder=" " required>
+                <label for="packName" class="m3-label">Skin Pack Name</label>
+            </div>
+        </section>
+
+        <div class="skins-grid">
+            
+            <div class="card skin-card">
+                <div class="card-header">
+                    <span class="material-symbols-outlined icon">accessibility</span>
+                    <h3>Skin 1</h3>
+                </div>
+                <div class="file-area">
+                    <label for="file1" class="file-upload-btn">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        <span id="fileName1">Choose PNG</span>
+                    </label>
+                    <input type="file" id="file1" accept=".png" hidden>
+                </div>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="size1" value="wide" checked>
+                        <span class="radio-custom"></span>
+                        Wide (Steve)
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="size1" value="slim">
+                        <span class="radio-custom"></span>
+                        Slim (Alex)
+                    </label>
+                </div>
+            </div>
+
+            <div class="card skin-card">
+                <div class="card-header">
+                    <span class="material-symbols-outlined icon">accessibility</span>
+                    <h3>Skin 2</h3>
+                </div>
+                <div class="file-area">
+                    <label for="file2" class="file-upload-btn">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        <span id="fileName2">Choose PNG</span>
+                    </label>
+                    <input type="file" id="file2" accept=".png" hidden>
+                </div>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="size2" value="wide" checked>
+                        <span class="radio-custom"></span>
+                        Wide
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="size2" value="slim">
+                        <span class="radio-custom"></span>
+                        Slim
+                    </label>
+                </div>
+            </div>
+
+            <div class="card skin-card">
+                <div class="card-header">
+                    <span class="material-symbols-outlined icon">accessibility</span>
+                    <h3>Skin 3</h3>
+                </div>
+                <div class="file-area">
+                    <label for="file3" class="file-upload-btn">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        <span id="fileName3">Choose PNG</span>
+                    </label>
+                    <input type="file" id="file3" accept=".png" hidden>
+                </div>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="size3" value="wide" checked>
+                        <span class="radio-custom"></span>
+                        Wide
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="size3" value="slim">
+                        <span class="radio-custom"></span>
+                        Slim
+                    </label>
+                </div>
+            </div>
+
+            <div class="card skin-card">
+                <div class="card-header">
+                    <span class="material-symbols-outlined icon">accessibility</span>
+                    <h3>Skin 4</h3>
+                </div>
+                <div class="file-area">
+                    <label for="file4" class="file-upload-btn">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        <span id="fileName4">Choose PNG</span>
+                    </label>
+                    <input type="file" id="file4" accept=".png" hidden>
+                </div>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="size4" value="wide" checked>
+                        <span class="radio-custom"></span>
+                        Wide
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="size4" value="slim">
+                        <span class="radio-custom"></span>
+                        Slim
+                    </label>
+                </div>
+            </div>
+
+            <div class="card skin-card">
+                <div class="card-header">
+                    <span class="material-symbols-outlined icon">accessibility</span>
+                    <h3>Skin 5</h3>
+                </div>
+                <div class="file-area">
+                    <label for="file5" class="file-upload-btn">
+                        <span class="material-symbols-outlined">upload_file</span>
+                        <span id="fileName5">Choose PNG</span>
+                    </label>
+                    <input type="file" id="file5" accept=".png" hidden>
+                </div>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="size5" value="wide" checked>
+                        <span class="radio-custom"></span>
+                        Wide
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="size5" value="slim">
+                        <span class="radio-custom"></span>
+                        Slim
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <button id="generatePackBtn" class="fab-extended">
+                <span class="material-symbols-outlined">download</span>
+                Download Skin Pack
+            </button>
+        </div>
+
+        <footer>
+            <p>Made using ChatGPT on 20240817 by <a href="https://github.com/faizul726/">faizul726</a>.</p>
+            <p style="margin-top: 5px; font-size: 0.8em; color: var(--md-outline);">UI design by <a href="https://github.com/pixelboy79/">Pixelboypro</a> using Gemini</p>
+            <a href="https://github.com/faizul726/mcskinpackcreator/" target="_blank" class="github-badge">
+                <img src="https://img.shields.io/badge/View_on_GitHub-black?logo=github" alt="View on GitHub">
+            </a>
+        </footer>
+    </main>
+
+    <div id="alertModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span class="material-symbols-outlined modal-icon">error</span>
+            <h3 class="modal-title">Action Required</h3>
+            <p id="modalMessage" class="modal-text">Error message text goes here.</p>
+            <div class="modal-actions">
+                <button id="modalCloseBtn" class="text-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
